@@ -128,7 +128,7 @@ export default function Settings() {
 
   // Sidebar menu items
   const menuItems: SidebarItem[] = [
-    { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard' },
+    { icon: LayoutDashboard, label: 'Tableau de bord', path: '/dashboard' },
     { icon: Search, label: 'Audit', path: '/audit' },
     { icon: BarChart3, label: 'Historique', path: '/audit/history' },
     { icon: Bot, label: 'Citations IA', path: '/ai-citations' },

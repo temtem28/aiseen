@@ -68,17 +68,19 @@ export default function Login() {
       console.error('Login error:', err);
       
       // Check if it's a network error (Failed to fetch)
-      if (err?.message?.includes('Failed to fetch') || err?.name === 'TypeError') {
+      if (err?.message?.includes('Failed to fetch') || err?.name === 'TypeError' || err?.message?.includes('ERR_NAME_NOT_RESOLVED')) {
         setNetworkError(true);
+        const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'non configuré';
         toast({ 
           title: 'Erreur de connexion au serveur', 
-          description: 'Impossible de joindre le serveur. Le projet Supabase est peut-être en pause.', 
-          variant: 'destructive' 
+          description: `Impossible de joindre Supabase (${supabaseUrl}). Vérifiez que le projet est actif et que l'URL est correcte dans .env`, 
+          variant: 'destructive',
+          duration: 10000
         });
       } else {
         toast({ 
           title: 'Erreur', 
-          description: 'Une erreur inattendue s\'est produite. Veuillez réessayer.', 
+          description: err?.message || 'Une erreur inattendue s\'est produite. Veuillez réessayer.', 
           variant: 'destructive' 
         });
       }

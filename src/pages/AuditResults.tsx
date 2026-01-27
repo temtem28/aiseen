@@ -186,7 +186,7 @@ const AuditResults = () => {
     if (analysis.title || analysis.description || analysis.structure) {
       return [
         { 
-          label: 'Title Tag', 
+          label: 'Balise Title', 
           icon: FileText,
           value: analysis.title ? (analysis.title.length > 100 ? analysis.title.substring(0, 100) + '...' : analysis.title) : 'Non analysé',
           isDetailed: true
@@ -216,7 +216,7 @@ const AuditResults = () => {
           isDetailed: true
         },
         { 
-          label: 'Open Graph / Social', 
+          label: 'Open Graph / Réseaux sociaux', 
           icon: Share,
           value: analysis.social ? (analysis.social.length > 100 ? analysis.social.substring(0, 100) + '...' : analysis.social) : 'Non analysé',
           isDetailed: true

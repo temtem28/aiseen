@@ -31,9 +31,9 @@ export default function Onboarding() {
     });
 
     if (error) {
-      toast({ title: 'Error', description: error.message, variant: 'destructive' });
+      toast({ title: 'Erreur', description: error.message, variant: 'destructive' });
     } else {
-      toast({ title: 'Success', description: 'Profile setup complete!' });
+      toast({ title: 'Succès', description: 'Configuration du profil terminée !' });
       navigate('/dashboard');
     }
     setLoading(false);
@@ -48,22 +48,22 @@ export default function Onboarding() {
               <div key={s} className={`h-2 flex-1 mx-1 rounded ${s <= step ? 'bg-blue-600' : 'bg-slate-200'}`} />
             ))}
           </div>
-          <h1 className="text-3xl font-bold text-slate-900">Welcome to AIOptimize</h1>
-          <p className="text-slate-600 mt-2">Let's set up your profile</p>
+          <h1 className="text-3xl font-bold text-slate-900">Bienvenue sur AIOptimize</h1>
+          <p className="text-slate-600 mt-2">Configurons votre profil</p>
         </div>
 
         {step === 1 && (
           <div className="space-y-4">
             <div>
-              <Label htmlFor="fullName">Full Name</Label>
+              <Label htmlFor="fullName">Nom complet</Label>
               <Input id="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} required />
             </div>
             <div>
-              <Label htmlFor="company">Company Name</Label>
+              <Label htmlFor="company">Nom de l'entreprise</Label>
               <Input id="company" value={company} onChange={(e) => setCompany(e.target.value)} />
             </div>
             <Button onClick={() => setStep(2)} className="w-full" disabled={!fullName}>
-              Continue
+              Continuer
             </Button>
           </div>
         )}
@@ -71,13 +71,13 @@ export default function Onboarding() {
         {step === 2 && (
           <div className="space-y-4">
             <div>
-              <Label htmlFor="website">Website URL</Label>
-              <Input id="website" type="url" value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="https://example.com" />
+              <Label htmlFor="website">URL du site web</Label>
+              <Input id="website" type="url" value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="https://exemple.com" />
             </div>
             <div className="flex gap-4">
-              <Button onClick={() => setStep(1)} variant="outline" className="flex-1">Back</Button>
+              <Button onClick={() => setStep(1)} variant="outline" className="flex-1">Retour</Button>
               <Button onClick={handleComplete} className="flex-1" disabled={loading}>
-                {loading ? 'Completing...' : 'Complete Setup'}
+                {loading ? 'Finalisation...' : 'Terminer la configuration'}
               </Button>
             </div>
           </div>
