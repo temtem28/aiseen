@@ -52,7 +52,7 @@ const Logo = ({ size = 'md', clickable = true, showTagline = false }: LogoProps)
       {/* Text */}
       <div className="flex flex-col leading-none">
         <span className={`font-extrabold tracking-tight ${s.text} text-white`}>
-          AI<span className="text-cyan-400">SEEN</span>
+          Zin<span className="text-cyan-400">eris</span>
         </span>
         {showTagline && (
           <span className={`${s.tagline} text-gray-500 font-medium mt-0.5`}>
