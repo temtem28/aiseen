@@ -56,17 +56,19 @@ export default function Signup() {
           toast({ title: 'Erreur', description: error.message, variant: 'destructive' });
         }
       } else if (data.user) {
-        // Create profile via edge function
+        // Upsert profile directly (trigger handles it too, this is belt-and-suspenders)
         try {
-          await supabase.functions.invoke('create-profile', {
-            body: { userId: data.user.id, email: email.trim(), fullName: '', companyName: '' }
-          });
+          await supabase.from('profiles').upsert({
+            id: data.user.id,
+            email: email.trim(),
+            plan: 'free',
+            credits: 3,
+          }, { onConflict: 'id' });
         } catch (profileErr) {
-          console.error('Profile creation error:', profileErr);
-          // Continue even if profile creation fails - it can be created later
+          console.error('Profile upsert error:', profileErr);
         }
-        toast({ title: 'Succès', description: 'Vérifiez votre email pour activer votre compte !' });
-        navigate('/verify-email');
+        toast({ title: 'Compte créé !', description: 'Bienvenue sur Zineris 🎉' });
+        navigate('/dashboard');
       }
     } catch (err: any) {
       console.error('Signup error:', err);

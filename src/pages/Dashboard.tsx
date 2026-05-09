@@ -161,23 +161,14 @@ export default function Dashboard() {
         .single();
 
       if (error) {
-        // If profile doesn't exist, create one
         if (error.code === 'PGRST116' || error.message?.includes('not found')) {
-          console.log('Profile not found, creating one...');
-          const { error: insertError } = await supabase
-            .from('profiles')
-            .upsert({
-              id: user.id,
-              email: user.email,
-              plan: 'free',
-              credits: 3,
-              created_at: new Date().toISOString(),
-              updated_at: new Date().toISOString()
-            });
-          
-          if (insertError) {
-            console.error('Error creating profile:', insertError);
-          }
+          // Profile missing — create it
+          await supabase.from('profiles').upsert({
+            id: user.id,
+            email: user.email,
+            plan: 'free',
+            credits: 3,
+          }, { onConflict: 'id' });
         } else {
           console.error('Error loading profile:', error);
         }
