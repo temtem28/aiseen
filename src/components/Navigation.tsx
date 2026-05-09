@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import Logo from './Logo';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,13 +19,7 @@ const Navigation = () => {
     <nav className="bg-gray-900/80 backdrop-blur-sm border-b border-cyan-500/20 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-            <img 
-              src="https://d64gsuwffb70l.cloudfront.net/69005c5263848c5dcc7c0aa7_1763614525972_3865b13c.webp" 
-              alt="Ai Seen Logo" 
-              className="h-10 object-contain"
-            />
-          </div>
+          <Logo size="md" />
 
           <div className="hidden md:flex items-center space-x-8">
             <button onClick={() => scrollToSection('features')} className="text-gray-300 hover:text-cyan-400 transition-colors">

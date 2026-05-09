@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
 import { useNavigate } from 'react-router-dom';
+import Logo from '@/components/Logo';
 import { 
   Search, LogOut, Bell, Settings, ChevronRight,
   Globe, Bot, Sparkles, Brain, MessageSquare,
@@ -850,15 +851,7 @@ export default function Dashboard() {
       <div className="fixed left-0 top-0 h-screen w-64 bg-[#0a0f1a] border-r border-[#1a2332] flex flex-col z-50">
         {/* Logo */}
         <div className="p-6 border-b border-[#1a2332]">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center">
-              <Zap className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <span className="text-xl font-bold text-white">SEAS</span>
-              <p className="text-xs text-gray-500">AI Visibility Platform</p>
-            </div>
-          </div>
+          <Logo size="md" showTagline clickable={false} />
         </div>
 
         {/* Navigation */}
