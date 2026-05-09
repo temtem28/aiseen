@@ -55,6 +55,29 @@ export type Profile = {
   full_name?: string;
   company?: string;
   website?: string;
+  phone?: string;
+  avatar_url?: string;
+  plan?: 'free' | 'freemium' | 'decouverte' | 'croissance' | 'entreprise';
+  credits?: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type Audit = {
+  id: string;
+  user_id: string;
+  website_url: string;
+  overall_score: number;
+  seo_score: number;
+  aeo_score: number;
+  performance_score: number;
+  ai_visibility: Record<string, number>;
+  recommendations: Array<{ title: string; description: string; priority: string; category: string }>;
+  metadata: Record<string, unknown>;
+  analysis: Record<string, unknown>;
+  seo_analysis: Record<string, unknown>;
+  scraping_method?: string;
+  is_simulation?: boolean;
   created_at: string;
   updated_at: string;
 };
@@ -64,9 +87,23 @@ export type Subscription = {
   user_id: string;
   stripe_customer_id?: string;
   stripe_subscription_id?: string;
-  plan: 'free' | 'decouverte' | 'croissance' | 'entreprise';
-  status: 'active' | 'canceled' | 'past_due';
+  plan: 'free' | 'freemium' | 'decouverte' | 'croissance' | 'entreprise';
+  status: 'active' | 'canceled' | 'past_due' | 'trialing';
   current_period_end?: string;
   created_at: string;
   updated_at: string;
+};
+
+export type AICitation = {
+  id: string;
+  user_id: string;
+  ai_model: string;
+  query_text?: string;
+  response_text?: string;
+  citation_context?: string;
+  sentiment: 'positive' | 'negative' | 'neutral';
+  confidence_score: number;
+  is_read: boolean;
+  detected_at: string;
+  created_at: string;
 };
