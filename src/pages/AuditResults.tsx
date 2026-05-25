@@ -826,21 +826,26 @@ const AuditResults = () => {
 
         {/* Save CTA for non-saved audits */}
         {!isSaved && (
-          <Card className="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border-cyan-500/20 mt-8">
-            <CardContent className="p-6">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    Sauvegardez cet audit
-                  </h3>
-                  <p className="text-gray-400">
-                    Enregistrez cet audit dans votre historique pour suivre l'évolution de votre site au fil du temps.
-                  </p>
+          <div className="mt-8 rounded-2xl border border-cyan-500/40 bg-gradient-to-r from-cyan-600/25 to-purple-600/25 p-px shadow-lg shadow-cyan-500/10">
+            <div className="rounded-2xl bg-gray-900/90 p-6">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center flex-shrink-0">
+                    <Save className="w-6 h-6 text-cyan-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-1">
+                      Sauvegardez cet audit
+                    </h3>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      Enregistrez cet audit dans votre historique pour suivre l'évolution de votre site au fil du temps.
+                    </p>
+                  </div>
                 </div>
-                <Button 
+                <Button
                   onClick={saveAudit}
                   disabled={isSaving}
-                  className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 whitespace-nowrap"
+                  className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white font-semibold px-6 py-2.5 rounded-xl shadow-lg shadow-cyan-500/20 whitespace-nowrap flex-shrink-0"
                 >
                   {isSaving ? (
                     <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Sauvegarde...</>
@@ -849,32 +854,37 @@ const AuditResults = () => {
                   )}
                 </Button>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         )}
 
-        {/* CTA */}
-        <Card className="bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 border-emerald-500/20 mt-8">
-          <CardContent className="p-6">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <div>
-                <h3 className="text-xl font-semibold text-white mb-2">
-                  Améliorez votre visibilité IA
-                </h3>
-                <p className="text-gray-400">
-                  Passez au plan Pro pour accéder à des analyses plus détaillées et des recommandations avancées.
-                </p>
+        {/* CTA Upgrade */}
+        <div className="mt-6 rounded-2xl border border-purple-500/40 bg-gradient-to-r from-purple-600/25 to-cyan-600/25 p-px shadow-lg shadow-purple-500/10">
+          <div className="rounded-2xl bg-gray-900/90 p-6">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center flex-shrink-0">
+                  <ChevronRight className="w-6 h-6 text-purple-400" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-1">
+                    Améliorez votre visibilité IA
+                  </h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    Passez au plan Pro pour accéder à des analyses plus détaillées et des recommandations avancées.
+                  </p>
+                </div>
               </div>
-              <Button 
+              <Button
                 onClick={() => navigate('/pricing')}
-                className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 whitespace-nowrap"
+                className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-400 hover:to-cyan-400 text-white font-semibold px-6 py-2.5 rounded-xl shadow-lg shadow-purple-500/20 whitespace-nowrap flex-shrink-0"
               >
                 Voir les plans
                 <ChevronRight className="h-4 w-4 ml-2" />
               </Button>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </div>
   );
