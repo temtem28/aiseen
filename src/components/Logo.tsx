@@ -11,39 +11,25 @@ const Logo = ({ size = 'md', clickable = true, showTagline = false }: LogoProps)
   const navigate = useNavigate();
 
   const heights = {
-    sm: { img: 28, tagline: 'text-[10px]' },
-    md: { img: 36, tagline: 'text-xs' },
-    lg: { img: 52, tagline: 'text-sm' },
+    sm: { h: 26, tagline: 'text-[9px]' },
+    md: { h: 34, tagline: 'text-[10px]' },
+    lg: { h: 48, tagline: 'text-xs' },
   };
 
   const s = heights[size];
 
   return (
     <div
-      className={`flex flex-col items-start ${clickable ? 'cursor-pointer select-none' : ''}`}
+      className={`flex flex-col items-start gap-0.5 ${clickable ? 'cursor-pointer select-none' : ''}`}
       onClick={clickable ? () => navigate('/') : undefined}
     >
       <img
-        src="/logo-zineris.png"
-        alt="Zineris"
-        style={{ height: s.img, width: 'auto', objectFit: 'contain' }}
-        onError={(e) => {
-          // Fallback si l'image ne charge pas
-          const target = e.currentTarget;
-          target.style.display = 'none';
-          const fallback = target.nextElementSibling as HTMLElement;
-          if (fallback) fallback.style.display = 'block';
-        }}
+        src="/logo-zineris.svg"
+        alt="ZINERIS"
+        style={{ height: s.h, width: 'auto', objectFit: 'contain' }}
       />
-      {/* Fallback texte si l'image échoue */}
-      <span
-        style={{ display: 'none' }}
-        className={`font-extrabold tracking-widest uppercase text-white ${size === 'sm' ? 'text-lg' : size === 'lg' ? 'text-3xl' : 'text-xl'}`}
-      >
-        ZINERIS
-      </span>
       {showTagline && (
-        <span className={`${s.tagline} text-gray-500 font-medium mt-0.5`}>
+        <span className={`${s.tagline} text-gray-500 font-medium tracking-wide`}>
           AI Visibility Platform
         </span>
       )}
