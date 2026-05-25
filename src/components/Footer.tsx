@@ -1,5 +1,6 @@
 import React from 'react';
-import { Sparkles, Mail, MapPin, Phone } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import Logo from './Logo';
 
 const Footer = () => {
   return (
@@ -7,12 +8,11 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
-            <div className="flex items-center mb-4">
-              <Sparkles className="w-8 h-8 text-cyan-400 mr-2" />
-              <span className="text-xl font-bold text-white">AI Focus</span>
+            <div className="mb-4">
+              <Logo size="md" clickable={false} />
             </div>
             <p className="text-gray-400 text-sm">
-              Le 1er SaaS français d'optimisation SEO et AEO pour dominer Google et les IA génératives.
+              Le SaaS d'optimisation SEO et AEO pour dominer Google et les IA génératives, partout dans le monde.
             </p>
           </div>
 
@@ -29,10 +29,10 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Entreprise</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">À propos</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">Blog</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">Carrières</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">Contact</a></li>
+              <li><a href="/about" className="text-gray-400 hover:text-cyan-400 transition-colors">À propos</a></li>
+              <li><a href="/blog" className="text-gray-400 hover:text-cyan-400 transition-colors">Blog</a></li>
+              <li><a href="/pricing" className="text-gray-400 hover:text-cyan-400 transition-colors">Tarifs</a></li>
+              <li><a href="mailto:contact@zineris.com" className="text-gray-400 hover:text-cyan-400 transition-colors">Contact</a></li>
             </ul>
           </div>
 
@@ -40,16 +40,10 @@ const Footer = () => {
             <h3 className="text-white font-semibold mb-4">Contact</h3>
             <ul className="space-y-3">
               <li className="flex items-start text-gray-400 text-sm">
-                <Mail className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
-                contact@aifocus.fr
-              </li>
-              <li className="flex items-start text-gray-400 text-sm">
-                <Phone className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
-                +33 1 23 45 67 89
-              </li>
-              <li className="flex items-start text-gray-400 text-sm">
-                <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
-                Paris, France
+                <Mail className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-cyan-400" />
+                <a href="mailto:contact@zineris.com" className="hover:text-cyan-400 transition-colors">
+                  contact@zineris.com
+                </a>
               </li>
             </ul>
           </div>
@@ -57,7 +51,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2025 AI Focus. Tous droits réservés.
+            © 2025 Zineris. Tous droits réservés.
           </p>
           <div className="flex space-x-6">
             <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Mentions légales</a>

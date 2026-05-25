@@ -39,8 +39,8 @@ const Pricing = () => {
     <section id="pricing" className="py-20 bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Visibilité IA + SEO · Prix Europe</h2>
-          <p className="text-xl text-gray-400">Tarifs en € pour l'Europe francophone</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Visibilité IA + SEO · Nos Prix</h2>
+          <p className="text-xl text-gray-400">Des tarifs adaptés à tous, partout dans le monde</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {plans.map((plan) => (

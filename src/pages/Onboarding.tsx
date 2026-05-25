@@ -48,7 +48,7 @@ export default function Onboarding() {
               <div key={s} className={`h-2 flex-1 mx-1 rounded ${s <= step ? 'bg-blue-600' : 'bg-slate-200'}`} />
             ))}
           </div>
-          <h1 className="text-3xl font-bold text-slate-900">Bienvenue sur AIOptimize</h1>
+          <h1 className="text-3xl font-bold text-slate-900">Bienvenue sur Zineris</h1>
           <p className="text-slate-600 mt-2">Configurons votre profil</p>
         </div>
 
