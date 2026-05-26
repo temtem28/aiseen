@@ -62,7 +62,7 @@ export default function Signup() {
             id: data.user.id,
             email: email.trim(),
             plan: 'free',
-            credits: 3,
+            credits_remaining: 3,
           }, { onConflict: 'id' });
         } catch (profileErr) {
           console.error('Profile upsert error:', profileErr);

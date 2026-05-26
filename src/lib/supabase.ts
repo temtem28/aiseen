@@ -58,7 +58,7 @@ export type Profile = {
   phone?: string;
   avatar_url?: string;
   plan?: 'free' | 'freemium' | 'decouverte' | 'croissance' | 'entreprise';
-  credits?: number;
+  credits_remaining?: number;
   created_at: string;
   updated_at: string;
 };

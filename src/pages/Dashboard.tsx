@@ -167,7 +167,7 @@ export default function Dashboard() {
             id: user.id,
             email: user.email,
             plan: 'free',
-            credits: 3,
+            credits_remaining: 3,
           }, { onConflict: 'id' });
         } else {
           console.error('Error loading profile:', error);
