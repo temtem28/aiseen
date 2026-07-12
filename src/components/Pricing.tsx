@@ -12,16 +12,15 @@ const Pricing = () => {
   const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
 
   const plans = [
-    { id: 'freemium', name: "Freemium", price: "0 €", period: "mois", target: "Découverte rapide", sites: "1 site", keywords: "20 mots-clés", aiQueries: "5 requêtes IA/mois", features: ["Quotas très limités", "AI Visibility Checker", "SEO & AEO Analyzer basique", "Watermark dans exports", "Support communautaire"], cta: "Commencer gratuitement", popular: false },
+    { id: 'starter', name: "Starter", price: "19 €", period: "mois", target: "Entrepreneur · Freelance", sites: "1 site", keywords: "100 mots-clés", aiQueries: "15 requêtes IA/mois", features: ["Accès aux fonctionnalités essentielles", "AI Visibility Checker", "SEO & AEO Analyzer", "Rapport mensuel automatisé", "Support par e-mail"], cta: "S'abonner", popular: false },
     { id: 'decouverte', name: "Découverte", price: "49 €", period: "mois", target: "Indépendants · TPE", sites: "1 site", keywords: "300 mots-clés", aiQueries: "30 requêtes IA/mois", features: ["Accès complet aux 7 fonctionnalités", "AI Visibility Checker", "SEO & AEO Analyzer", "Weekly Report automatisé", "Support e-mail"], cta: "S'abonner", popular: false },
     { id: 'croissance', name: "Croissance", price: "249 €", period: "mois", target: "Agences · PME", sites: "10 sites", keywords: "1 200 mots-clés", aiQueries: "150 requêtes IA/mois", features: ["Toutes les 7 fonctionnalités avancées", "Comparaison concurrentielle multi-domaines", "Content Optimizer : 25 contenus/mois", "Audit AEO offert", "Intégrations Analytics & Slack"], cta: "S'abonner", popular: true },
     { id: 'enterprise', name: "Pro-Entreprise", price: "1 199 €", period: "mois", target: "Solutions enterprise", sites: "Jusqu'à 250 sites", keywords: "10 000 mots-clés", aiQueries: "1 000+ requêtes IA/mois", features: ["Dashboards personnalisés", "SLA 99,9%", "Account manager dédié", "Workshops mensuels", "Reporting white-label"], cta: "Contact commercial", popular: false }
   ];
 
   const handleSubscribe = async (planId: string) => {
-    if (planId === 'freemium') { navigate('/signup'); return; }
-    if (planId === 'enterprise') { window.location.href = 'mailto:contact@aiseen.com?subject=Demande Enterprise'; return; }
-    if (!user) { toast({ title: 'Connexion requise', description: 'Connectez-vous pour vous abonner.', variant: 'destructive' }); navigate('/login'); return; }
+    if (!user && planId !== 'enterprise') { toast({ title: 'Connexion requise', description: 'Connectez-vous pour vous abonner.', variant: 'destructive' }); navigate('/login'); return; }
+    if (planId === 'enterprise') { window.location.href = 'mailto:contact@zineris.com?subject=Demande Enterprise'; return; }
 
     setLoadingPlan(planId);
     try {

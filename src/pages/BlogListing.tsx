@@ -69,7 +69,7 @@ const BlogListing = () => {
       
       <div className="relative py-20 px-4 bg-gradient-to-br from-cyan-900/20 to-purple-900/20">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl font-bold text-white mb-6">Blog AI Focus</h1>
+          <h1 className="text-5xl font-bold text-white mb-6">Blog Zineris</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Découvrez nos articles sur l'AEO, le SEO et l'optimisation pour les IA
           </p>

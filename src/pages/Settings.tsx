@@ -1245,7 +1245,7 @@ export default function Settings() {
         <footer className="px-6 py-4 border-t border-[#1a2332]">
           <div className="flex items-center justify-between text-xs text-gray-500">
             <div className="flex items-center gap-4">
-              <span>© 2024 SEAS - Ai Seen</span>
+              <span>© 2025 Zineris</span>
               <span className="flex items-center gap-1">
                 <Globe className="w-3 h-3" /> Hébergé en Europe
               </span>

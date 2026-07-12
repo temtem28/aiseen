@@ -115,7 +115,7 @@ const PerplexityIcon = () => (
 export default function CompetitiveAnalysis() {
   const navigate = useNavigate();
   const [mainSite, setMainSite] = useState('');
-  const [competitors, setCompetitors] = useState<string[]>(['', '', '']);
+  const [competitors, setCompetitors] = useState<string[]>(['']);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -464,13 +464,13 @@ export default function CompetitiveAnalysis() {
                   </label>
                   {competitors.length < 3 && (
                     <Button
-                      variant="ghost"
+                      variant="outline"
                       size="sm"
                       onClick={handleAddCompetitor}
-                      className="text-cyan-400 hover:text-cyan-300"
+                      className="border-gray-700 text-gray-300 hover:text-white hover:bg-gray-800 h-8 text-xs"
                     >
-                      <Plus className="h-4 w-4 mr-1" />
-                      Ajouter
+                      <Plus className="h-3 w-3 mr-1" />
+                      Ajouter un concurrent
                     </Button>
                   )}
                 </div>

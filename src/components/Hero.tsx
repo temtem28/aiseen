@@ -1,4 +1,5 @@
 import React from 'react';
+import DashboardMockup from './DashboardMockup';
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -52,13 +53,11 @@ const Hero = () => {
           </button>
         </div>
 
-        <div className="relative max-w-5xl mx-auto">
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-2xl blur-2xl opacity-30 animate-pulse"></div>
-          <img 
-            src="https://d64gsuwffb70l.cloudfront.net/69005c5263848c5dcc7c0aa7_1761631373217_6f6545ab.webp"
-            alt="AI Focus Dashboard"
-            className="relative rounded-2xl shadow-2xl border border-white/10"
-          />
+        <div className="relative max-w-4xl mx-auto">
+          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-cyan-500 to-purple-500 rounded-2xl blur-3xl opacity-20 animate-pulse"></div>
+          <div className="relative">
+            <DashboardMockup />
+          </div>
         </div>
       </div>
     </div>

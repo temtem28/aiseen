@@ -15,7 +15,7 @@ CREATE TABLE blog_posts (
   image_url TEXT NOT NULL,
   category TEXT NOT NULL,
   tags TEXT[] DEFAULT '{}',
-  author_name TEXT DEFAULT 'Équipe AI Focus',
+  author_name TEXT DEFAULT 'Équipe Zineris',
   author_avatar TEXT,
   read_time INTEGER DEFAULT 5,
   published_at TIMESTAMPTZ DEFAULT NOW(),

@@ -295,7 +295,7 @@ serve(async (req) => {
     // Fetch the target website
     const response = await fetch(normalizedUrl, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; AiSeen-Bot/1.0; +https://aiseen.com/bot)',
+        'User-Agent': 'Mozilla/5.0 (compatible; Zineris-Bot/1.0; +https://zineris.com/bot)',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Language': 'fr,fr-FR;q=0.9,en;q=0.8',
       },

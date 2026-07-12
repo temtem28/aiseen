@@ -33,7 +33,7 @@ export default function DashboardSidebar() {
 
   const bottomItems: SidebarItem[] = [
     { icon: Settings, label: 'Paramètres', path: '/settings' },
-    { icon: HelpCircle, label: 'Aide', path: '/help' },
+    { icon: HelpCircle, label: 'Aide', path: 'mailto:contact@zineris.com' },
   ];
 
   return (
@@ -76,7 +76,7 @@ export default function DashboardSidebar() {
         {bottomItems.map((item) => (
           <button
             key={item.path}
-            onClick={() => navigate(item.path)}
+            onClick={() => item.path.startsWith('mailto:') || item.path.includes('#') ? (window.location.href = item.path) : navigate(item.path)}
             className="w-10 h-10 rounded-xl flex items-center justify-center text-gray-500 hover:text-cyan-400 hover:bg-[#1a2332] transition-all duration-200 group"
           >
             <item.icon className="w-5 h-5" />

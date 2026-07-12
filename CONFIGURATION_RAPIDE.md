@@ -1,6 +1,6 @@
 # ⚡ CONFIGURATION SUPABASE - GUIDE RAPIDE
 
-## 🎯 Projet AI Focus déjà configuré !
+## 🎯 Projet Zineris déjà configuré !
 
 - **Project ID**: `qfytjeniqglpkjxddpma`
 - **URL**: `https://qfytjeniqglpkjxddpma.supabase.co`

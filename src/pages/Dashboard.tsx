@@ -80,6 +80,9 @@ export default function Dashboard() {
     scoreChanges: true
   });
 
+  // État pour les rapports
+  const [isGenerating, setIsGenerating] = useState(false);
+
   // État pour le menu profil
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const profileMenuRef = useRef<HTMLDivElement>(null);
@@ -95,6 +98,29 @@ export default function Dashboard() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  const generateReport = async () => {
+    setIsGenerating(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('generate-weekly-report', {
+        body: {
+          user_id: user?.id,
+          user_email: user?.email,
+          force_generate: true,
+          send_email: notifications.weeklyReport
+        }
+      });
+      if (error) throw error;
+      toast({
+        title: "Rapport généré",
+        description: notifications.weeklyReport ? "Le rapport a été envoyé par email" : "Rapport disponible"
+      });
+    } catch (err: any) {
+      toast({ title: "Erreur", description: err.message, variant: "destructive" });
+    } finally {
+      setIsGenerating(false);
+    }
+  };
 
   // Menu items
   const menuItems = [
@@ -636,40 +662,6 @@ export default function Dashboard() {
   );
 
   const renderReportsView = () => {
-    const [isGenerating, setIsGenerating] = useState(false);
-    const [reports, setReports] = useState<any[]>([]);
-    const [selectedReport, setSelectedReport] = useState<any>(null);
-
-    const generateReport = async () => {
-      setIsGenerating(true);
-      try {
-        const { data, error } = await supabase.functions.invoke('generate-weekly-report', {
-          body: { 
-            user_id: user?.id,
-            user_email: user?.email,
-            force_generate: true,
-            send_email: notifications.weeklyReport
-          }
-        });
-        
-        if (error) throw error;
-        
-        toast({ 
-          title: "Rapport généré", 
-          description: notifications.weeklyReport ? "Le rapport a été envoyé par email" : "Rapport disponible"
-        });
-        
-        if (data?.report) {
-          setReports(prev => [data.report, ...prev]);
-          setSelectedReport(data.report);
-        }
-      } catch (err: any) {
-        toast({ title: "Erreur", description: err.message, variant: "destructive" });
-      } finally {
-        setIsGenerating(false);
-      }
-    };
-
     return (
       <div className="space-y-6">
         <div className="flex items-center justify-between">
@@ -929,7 +921,10 @@ export default function Dashboard() {
               <p className="text-sm text-gray-500">{new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
             </div>
             <div className="flex items-center gap-3">
-              <button className="relative p-2 rounded-lg bg-[#0d1321] border border-[#1a2332] text-gray-400 hover:text-white transition-colors">
+              <button
+                onClick={() => { setShowSettings(true); setSettingsTab('notifications'); }}
+                className="relative p-2 rounded-lg bg-[#0d1321] border border-[#1a2332] text-gray-400 hover:text-white transition-colors"
+              >
                 <Bell className="w-5 h-5" />
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
               </button>

@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { Chrome, Sparkles, AlertTriangle, RefreshCw } from 'lucide-react';
+import { Sparkles, AlertTriangle, RefreshCw } from 'lucide-react';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -88,38 +88,6 @@ export default function Login() {
     setLoading(false);
   };
 
-  const handleGoogleLogin = async () => {
-    if (!isSupabaseConfigured) {
-      toast({ title: 'Configuration requise', description: 'Veuillez configurer Supabase. Voir SETUP_AUTH.md', variant: 'destructive' });
-      return;
-    }
-    
-    setLoading(true);
-    setNetworkError(false);
-    
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: { redirectTo: `${window.location.origin}/dashboard` }
-      });
-      if (error) {
-        toast({ title: 'Erreur', description: error.message, variant: 'destructive' });
-      }
-    } catch (err: any) {
-      console.error('Google login error:', err);
-      if (err?.message?.includes('Failed to fetch') || err?.name === 'TypeError') {
-        setNetworkError(true);
-        toast({ 
-          title: 'Erreur de connexion au serveur', 
-          description: 'Impossible de joindre le serveur.', 
-          variant: 'destructive' 
-        });
-      } else {
-        toast({ title: 'Erreur', description: 'Erreur de connexion', variant: 'destructive' });
-      }
-    }
-    setLoading(false);
-  };
 
   const handleRetry = () => {
     setNetworkError(false);
@@ -138,7 +106,7 @@ export default function Login() {
             <Sparkles className="h-12 w-12 text-cyan-400" />
           </div>
           <h1 className="text-3xl font-bold text-white">Bon retour !</h1>
-          <p className="text-gray-400 mt-2">Connectez-vous à votre compte AI Focus</p>
+          <p className="text-gray-400 mt-2">Connectez-vous à votre compte Zineris</p>
         </div>
 
         {/* Network Error Alert */}
@@ -215,26 +183,6 @@ export default function Login() {
             )}
           </Button>
         </form>
-
-        <div className="relative my-6">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-700"></div>
-          </div>
-          <div className="relative flex justify-center text-xs">
-            <span className="bg-gray-900 px-2 text-gray-500">ou</span>
-          </div>
-        </div>
-
-        <div>
-          <Button 
-            onClick={handleGoogleLogin} 
-            variant="outline" 
-            className="w-full border-gray-700 text-gray-200 hover:bg-gray-800"
-            disabled={loading}
-          >
-            <Chrome className="mr-2 h-4 w-4" /> Continuer avec Google
-          </Button>
-        </div>
 
         <div className="mt-6 text-center text-sm">
           <Link to="/reset-password" className="text-cyan-400 hover:underline">Mot de passe oublié ?</Link>

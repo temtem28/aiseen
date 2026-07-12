@@ -132,26 +132,29 @@ const AuditResults = () => {
 
     setIsSaving(true);
     try {
-      const { data, error } = await supabase.functions.invoke('save-audit', {
-        body: {
-          userId: user.id,
-          results: results
-        }
+      const { error } = await supabase.from('audits').insert({
+        user_id: user.id,
+        website_url: results.url,
+        overall_score: results.overall_score ?? results.global_score ?? 0,
+        seo_score: results.seo_score ?? 0,
+        aeo_score: results.aeo_score ?? 0,
+        performance_score: results.performance_score ?? 0,
+        ai_visibility: aiVisibility,
+        recommendations: results.recommendations ?? [],
+        metadata: results.metadata ?? {},
+        analysis: results.analysis ?? {},
+        seo_analysis: results.seo_analysis ?? {},
+        scraping_method: results.scraping_method ?? null,
+        is_simulation: results.is_simulation ?? false,
       });
 
-      if (error) {
-        throw new Error(error.message);
-      }
+      if (error) throw new Error(error.message);
 
-      if (data?.success) {
-        setIsSaved(true);
-        toast({
-          title: "Audit sauvegardé",
-          description: "Votre audit a été sauvegardé avec succès dans votre historique",
-        });
-      } else {
-        throw new Error(data?.error || 'Erreur lors de la sauvegarde');
-      }
+      setIsSaved(true);
+      toast({
+        title: "Audit sauvegardé",
+        description: "Votre audit a été sauvegardé avec succès dans votre historique",
+      });
     } catch (error: any) {
       console.error('Erreur sauvegarde:', error);
       toast({

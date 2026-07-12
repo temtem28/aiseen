@@ -88,7 +88,11 @@ export const generateAuditPDF = (results: AuditResults) => {
   
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(10);
-  results.ai_visibility?.forEach((ai) => {
+  const aiEntries = Array.isArray(results.ai_visibility)
+    ? results.ai_visibility
+    : Object.entries(results.ai_visibility || {}).map(([name, score]) => ({ name, score: score as number }));
+
+  aiEntries.forEach((ai) => {
     const color = getScoreColor(ai.score);
     doc.setTextColor(80, 80, 80);
     doc.text(`${ai.name}:`, 25, y);

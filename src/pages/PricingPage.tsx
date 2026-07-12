@@ -9,14 +9,14 @@ import Footer from '@/components/Footer';
 
 const plans = [
   {
-    id: 'freemium',
-    name: 'Freemium',
-    price: '0 €',
+    id: 'starter',
+    name: 'Starter',
+    price: '19 €',
     period: 'mois',
     icon: Sparkles,
-    target: 'Découverte rapide',
-    features: ['1 site', '20 mots-clés', '5 requêtes IA/mois', 'AI Visibility Checker', 'Support communautaire'],
-    cta: 'Commencer gratuitement',
+    target: 'Entrepreneur · Freelance',
+    features: ['1 site', '100 mots-clés', '15 requêtes IA/mois', 'AI Visibility Checker', 'SEO & AEO Analyzer', 'Support par e-mail'],
+    cta: 'S\'abonner',
     popular: false,
     color: 'gray'
   },
@@ -65,12 +65,8 @@ const PricingPage = () => {
   const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
 
   const handleSubscribe = async (planId: string) => {
-    if (planId === 'freemium') {
-      navigate('/signup');
-      return;
-    }
     if (planId === 'enterprise') {
-      window.location.href = 'mailto:contact@aiseen.com?subject=Demande Enterprise';
+      window.location.href = 'mailto:contact@zineris.com?subject=Demande Enterprise';
       return;
     }
     if (!user) {

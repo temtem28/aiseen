@@ -1,4 +1,4 @@
-# Configuration de l'Authentification Supabase pour AI Focus
+# Configuration de l'Authentification Supabase pour Zineris
 
 ## Projet Supabase
 - **Project ID**: `qfytjeniqglpkjxddpma`

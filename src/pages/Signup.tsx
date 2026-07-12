@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { Chrome, Sparkles, AlertTriangle, RefreshCw } from 'lucide-react';
+import { Sparkles, AlertTriangle, RefreshCw } from 'lucide-react';
 
 export default function Signup() {
   const [email, setEmail] = useState('');
@@ -89,38 +89,6 @@ export default function Signup() {
     setLoading(false);
   };
 
-  const handleGoogleSignup = async () => {
-    if (!isSupabaseConfigured) {
-      toast({ title: 'Configuration requise', description: 'Veuillez configurer Supabase. Voir SETUP_AUTH.md', variant: 'destructive' });
-      return;
-    }
-    
-    setLoading(true);
-    setNetworkError(false);
-    
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: { redirectTo: `${window.location.origin}/onboarding` }
-      });
-      if (error) {
-        toast({ title: 'Erreur', description: error.message, variant: 'destructive' });
-      }
-    } catch (err: any) {
-      console.error('Google signup error:', err);
-      if (err?.message?.includes('Failed to fetch') || err?.name === 'TypeError') {
-        setNetworkError(true);
-        toast({ 
-          title: 'Erreur de connexion au serveur', 
-          description: 'Impossible de joindre le serveur.', 
-          variant: 'destructive' 
-        });
-      } else {
-        toast({ title: 'Erreur', description: 'Erreur de connexion', variant: 'destructive' });
-      }
-    }
-    setLoading(false);
-  };
 
   const handleRetry = () => {
     setNetworkError(false);
@@ -224,26 +192,6 @@ export default function Signup() {
             )}
           </Button>
         </form>
-
-        <div className="relative my-6">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-700"></div>
-          </div>
-          <div className="relative flex justify-center text-xs">
-            <span className="bg-gray-900 px-2 text-gray-500">ou</span>
-          </div>
-        </div>
-
-        <div>
-          <Button 
-            onClick={handleGoogleSignup} 
-            variant="outline" 
-            className="w-full border-gray-700 text-gray-200 hover:bg-gray-800"
-            disabled={loading}
-          >
-            <Chrome className="mr-2 h-4 w-4" /> Continuer avec Google
-          </Button>
-        </div>
 
         <div className="mt-6 text-center text-sm text-gray-400">
           Déjà un compte ? <Link to="/login" className="text-cyan-400 hover:underline">Se connecter</Link>
