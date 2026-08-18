@@ -107,7 +107,7 @@ export default function Signup() {
             <Sparkles className="h-12 w-12 text-cyan-400" />
           </div>
           <h1 className="text-3xl font-bold text-white">Créer un compte</h1>
-          <p className="text-gray-400 mt-2">Commencez votre essai gratuit de 14 jours</p>
+          <p className="text-gray-400 mt-2">Créez votre compte et commencez dès maintenant</p>
         </div>
 
         {/* Network Error Alert */}

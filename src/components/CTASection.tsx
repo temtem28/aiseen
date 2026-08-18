@@ -15,22 +15,19 @@ const CTASection = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button 
-            onClick={() => navigate('/signup')}
+          <button
+            onClick={() => navigate('/pricing')}
             className="px-8 py-4 bg-white text-cyan-600 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
           >
-            Commencer gratuitement
+            Voir les offres
           </button>
-          <button 
+          <button
             onClick={() => navigate('/audit')}
             className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg font-semibold text-lg hover:bg-white/20 transition-all border border-white/20"
           >
-            Tester un audit gratuit
+            Lancer un audit
           </button>
         </div>
-        <p className="text-white/80 mt-6 text-sm">
-          14 jours d'essai gratuit • Sans carte bancaire • Annulation à tout moment
-        </p>
       </div>
     </section>
   );

@@ -37,11 +37,11 @@ const Navigation = () => {
             <button onClick={() => navigate('/login')} className="text-gray-300 hover:text-cyan-400 transition-colors">
               Connexion
             </button>
-            <button 
-              onClick={() => navigate('/signup')}
+            <button
+              onClick={() => navigate('/pricing')}
               className="px-6 py-2 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition-colors font-semibold"
             >
-              Essai gratuit
+              S'abonner
             </button>
           </div>
 
@@ -67,11 +67,11 @@ const Navigation = () => {
             <button onClick={() => { setIsMenuOpen(false); navigate('/login'); }} className="block w-full text-left text-gray-300 hover:text-cyan-400">
               Connexion
             </button>
-            <button 
-              onClick={() => { setIsMenuOpen(false); navigate('/signup'); }}
+            <button
+              onClick={() => { setIsMenuOpen(false); navigate('/pricing'); }}
               className="block w-full px-6 py-2 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 font-semibold"
             >
-              Essai gratuit
+              S'abonner
             </button>
           </div>
         )}
