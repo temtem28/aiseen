@@ -57,7 +57,7 @@ export type Profile = {
   website?: string;
   phone?: string;
   avatar_url?: string;
-  plan?: 'free' | 'starter' | 'decouverte' | 'croissance' | 'entreprise';
+  plan?: 'free' | 'starter' | 'decouverte' | 'agence_revendeur' | 'croissance' | 'entreprise';
   credits_remaining?: number;
   created_at: string;
   updated_at: string;
@@ -87,7 +87,7 @@ export type Subscription = {
   user_id: string;
   stripe_customer_id?: string;
   stripe_subscription_id?: string;
-  plan: 'free' | 'starter' | 'decouverte' | 'croissance' | 'entreprise';
+  plan: 'free' | 'starter' | 'decouverte' | 'agence_revendeur' | 'croissance' | 'entreprise';
   status: 'active' | 'canceled' | 'past_due' | 'trialing';
   current_period_end?: string;
   created_at: string;

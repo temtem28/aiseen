@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 
 /* ─── Types ────────────────────────────────────────────────────── */
-type Plan = 'free' | 'starter' | 'decouverte' | 'croissance' | 'entreprise';
+type Plan = 'free' | 'starter' | 'decouverte' | 'agence_revendeur' | 'croissance' | 'entreprise';
 
 interface UserProfile {
   id: string;
@@ -42,6 +42,7 @@ const PLAN_LABELS: Record<Plan, string> = {
   free: 'Free',
   starter: 'Starter',
   decouverte: 'Découverte',
+  agence_revendeur: 'Agence Revendeur',
   croissance: 'Croissance',
   entreprise: 'Entreprise',
 };
@@ -50,6 +51,7 @@ const PLAN_COLORS: Record<Plan, string> = {
   free: 'bg-gray-700 text-gray-300',
   starter: 'bg-cyan-900/60 text-cyan-300',
   decouverte: 'bg-indigo-900/60 text-indigo-300',
+  agence_revendeur: 'bg-emerald-900/60 text-emerald-300',
   croissance: 'bg-amber-900/60 text-amber-300',
   entreprise: 'bg-purple-900/60 text-purple-300',
 };
